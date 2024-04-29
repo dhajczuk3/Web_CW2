@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Projektu</title>
+</head>
+<body>
+    <div id="content">
+        <!-- Tutaj zostanie umieszczona zawartość pliku Mustache -->
+    </div>
+
+    <script>
+        var mustacheFiles = [
+            "user/adminView.mustache",
+            "user/login.mustache",
+            "user/register.mustache",
+            "about.mustache",
+            "basket.mustache",
+            "contact.mustache",
+            "entries.mustache",
+            "header.mustache",
+            "home.mustache",
+            "messagesPage.mustache",
+            "nav.mustache",
+            "newEntry.mustache",
+            "purchaseConfirmation.mustache",
+            "purchaseSuccess.mustache",
+            "stock.mustache",
+            "thankyou_message.mustache"
+        ];
+
+        function loadMustacheContent() {
+            var contentDiv = document.getElementById("content");
+            var mustacheContent = "";
+
+            mustacheFiles.forEach(function(file) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", file, false);
+                xhr.send();
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    mustacheContent += xhr.responseText;
+                }
+            });
+
+            contentDiv.innerHTML = mustacheContent;
+        }
+
+        window.onload = loadMustacheContent;
+    </script>
+</body>
+</html>
