@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{> header}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            padding-top: 20px; 
+        }
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px; 
+        }
+        .table-actions button {
+            margin-right: 10px; 
+        }
+        .tab-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+        }
+        .table-container {
+            flex: 1; 
+            background-color: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        }
+        .table-container.products {
+            flex: 3; 
+        }
+        .table-container.users {
+            flex: 1;
+        }
+    </style>
+</head>
+<body class="container">
+<body>
+{{>nav}}
+<div class="container">
+    <div class="tab-content">
+        <div class="table-container products">
+            <h4>Manage Products</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Author</th>
+                        <th>Expiry Date</th>
+                        <th>Date Added</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#entries}}
+                    <tr>
+                        <td>{{type}}</td>
+                        <td>{{productName}}</td>
+                        <td>{{quantity}}</td>
+                        <td><a href="/posts/{{author}}">{{author}}</a></td>
+                        <td>{{expiryDate}}</td>
+                        <td>{{dateAdded}}</td>
+                        <td>
+                            <form action="/product/deleteProduct/{{_id}}" method="post">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{/entries}}
+                </tbody>
+            </table>
+        </div>
+        <div class="table-container users">
+            <h4>Manage Users</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#users}}
+                    <tr>
+                        <td>{{user}}</td>
+                        <td class="table-actions">
+                            <form action="/user/delete/{{_id}}" method="post" style="display: inline-block;">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{/users}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{>header}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            background-color: #ffffff; /* Białe tło dla całej strony */
+        }
+        .centered-table {
+            margin: 0 auto;
+            width: 70%;
+            background-color: #ffffff; /* Białe tło dla tabeli */
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .action-buttons form {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+{{>nav}}
+    {{#entries.length}}
+        <table class="table table-striped centered-table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Added By</th>
+                    <th>Expiry Date</th>
+                    <th>Date Added</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#entries}}
+                <tr>
+                    <td>{{type}}</td>
+                    <td>{{productName}}</td>
+                    <td>{{quantity}}</td>
+                    <td><a href="/posts/{{author}}">{{author}}</a></td>
+                    <td>{{expiryDate}}</td>
+                    <td>{{dateAdded}}</td>
+                    <td class="action-buttons">
+                        <form action="/addToBasket" method="POST">
+                            <input type="hidden" name="productId" value="{{_id}}">
+                            <button type="submit" class="btn btn-success">Add to Basket</button>
+                        </form>
+                    </td>
+                </tr>
+                {{/entries}}
+            </tbody>
+        </table>
+    {{/entries.length}}
+
+    <!-- Bootstrap JavaScript CDN -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+<body class="container">
+</html>

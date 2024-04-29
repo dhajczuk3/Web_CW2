@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{>header}}
+    <link rel="stylesheet" href="css/styles.css"> 
+
+    <style>
+        body {
+            background-color: black; 
+            font-family: 'Arial', sans-serif; 
+            color: white; 
+        }
+        .centered-table {
+            margin: 0 auto; 
+            width: 70%; 
+        }
+        .container {
+            text-align: center; 
+            font-weight: bold; 
+        }
+        .beta-notice {
+            color: red;
+            font-size: 16px; 
+            margin-top: 150px;
+        }
+    </style>
+</head>
+<body class="container">
+
+<body>
+{{>nav}}
+<div class="container">
+    <h2>Welcome to The Scottish Pantry Network</h2>
+    <h2>Join our community effort to connect and support local food security.</h2>
+    <br><br>
+    <p class="beta-notice">Please note - this is a beta version. To test the full functionality of the website, please use the following login credentials:
+        To login to admin, please use username: "admin", password: "admin". To login as a user, please use username: "user", password: "user", or feel free to register a new account.</p>
+</div>
+</body>
+</html>

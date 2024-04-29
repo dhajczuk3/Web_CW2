@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Scottish Pantry Network</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .navbar {
+            background-color: transparent !important; /* Ensures navbar is transparent */
+        }
+        .navbar-nav .nav-link {
+            background-color: rgba(35, 57, 60, 0.5); /* Semi-transparent for nav links */
+            color: white !important;
+            border: 1px solid white;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(28, 46, 49, 0.7);
+        }
+        .navbar-nav img {
+            width: 50px;
+            height: 50px;
+            margin-right: 12px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(58, 97, 100);">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/images/logo.png" alt="Logo">
+        </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" style="text-align: center;">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="btn btn-primary nav-link" href="/">
+                    <img src="/images/homepage.png" alt="Homepage"> Homepage
+                </a>
+            </li>
+            {{^user}}
+            <li class="nav-item">
+                <a class="btn btn-primary nav-link" href="/contact">
+                    <img src="/images/contact.png" alt="Contact"> Contact
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary nav-link" href="/about">
+                    <img src="/images/about.png" alt="About"> About
+                </a>
+            </li>
+            {{/user}}
+            {{#user}}
+            <li class="nav-item">
+                <a class="btn btn-primary nav-link" href="/stock">
+                    <img src="/images/stock.png" alt="Browse Stock"> Browse Stock
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary nav-link" href="/basket">
+                    <img src="/images/basket.png" alt="Basket"> Basket
+                </a>
+            </li>
+            {{#isAdmin}}
+            <li class="nav-item">
+                <a class="btn btn-primary nav-link" href="/adminView">
+                    <img src="/images/admin.png" alt="Admin Dashboard"> Admin Dashboard
+                </a>
+            </li>
+            {{/isAdmin}}
+            <li class="nav-item">
+                <a class="btn btn-success nav-link" href="/new">
+                    <img src="/images/add_product.png" alt="Add Product"> Add Product
+                </a>
+            </li>
+            {{/user}}
+            {{^user}}
+            <li class="nav-item">
+                <a class="btn btn-primary nav-link" href="/login">
+                    <img src="/images/login.png" alt="Sign in"> Sign in
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary nav-link" href="/register">
+                    <img src="/images/register.png" alt="Register"> Register
+                </a>
+            </li>
+            {{/user}}
+            {{#user}}
+            <li class="nav-item">
+                <a class="btn btn-primary nav-link" href="/logout">
+                    <img src="/images/logout.png" alt="Sign out"> Sign out
+                </a>
+            </li>
+            {{/user}}
+        </ul>
+    </div>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Purchase</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            margin-bottom: 20px;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .card-body {
+            background-color: #f8f8f9;
+            padding: 20px;
+        }
+        .card-title {
+            color: #333;
+            font-size: 1.2rem;
+        }
+        .btn-success {
+            width: 100%;
+            padding: 10px;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    {{>nav}}
+    <div class="container">
+        <h1>Confirm Purchase</h1>
+        <form action="/confirmPurchase" method="POST">
+            {{#items}}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{productName}}</h5>
+                    <p class="card-text">Type: {{type}}</p>
+                    <p class="card-text">Quantity: {{quantity}}</p>
+                    <p class="card-text">Author: {{author}}</p>
+                    <p class="card-text">Expiry Date: {{expiryDate}}</p>
+                    <p class="card-text">Date Added: {{dateAdded}}</p>
+                </div>
+            </div>
+            {{/items}}
+            <button type="submit" class="btn btn-success">Complete Purchase</button>
+        </form>
+    </div>
+</body>
+<body class="container">
+
+</html>

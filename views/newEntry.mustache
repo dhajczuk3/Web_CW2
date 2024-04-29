@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>header}}
+    <link rel="stylesheet" href="css/styles.css">
+        <style>
+        body { padding-top: 20px; }
+    </style>
+</head>
+<body class="container">
+{{> nav}}
+    <h2>Add Product</h2>
+    <div class="text-right" style="margin-bottom: 1em;">
+    {{^user}}
+        <a id="login" href="/register" class="btn btn-primary">
+            Register
+        </a>
+        <a id="login" href="/login" class="btn btn-primary">
+            Sign in
+        </a>
+    {{/user}}
+    {{#user}}
+        <a id="logout" href="/logout" class="btn btn-primary">
+            Sign out
+        </a>
+    {{/user}}
+    </div>
+    <form method="post" role="form" action="/new">
+        <div class="form-group">
+            <label for="type">Type</label>
+            <select id="type" name="type" class="form-control">
+                <option value="Dairy">Dairy</option>
+                <option value="Meat">Meat</option>
+                <option value="Vegetable">Vegetable</option>
+                <option value="Fruit">Fruit</option>
+                <option value="Grain">Grain</option>
+                <option value="Drink">Drink</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter product name" required>
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity" min="1" required>
+        </div>
+        <div class="form-group">
+            <label for="expiryDate">Expiry Date</label>
+            <input type="date" class="form-control" id="expiryDate" name="expiryDate" min={{minDate}} required>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add Product" class="btn btn-primary">
+        </div>
+    </form>
+</body>
+<body class="container">
+
+</html>

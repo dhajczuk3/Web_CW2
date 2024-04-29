@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basket</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    {{>nav}}
+
+    <div class="container">
+        <h1>Basket</h1>
+        <div class="items">
+            {{#items}}
+            <div class="item">
+                <h4>{{productName}}</h4>
+                <p>Type: {{type}}</p>
+                <p>Quantity: {{quantity}}</p>
+                <p>Author: {{author}}</p>
+                <p>Expiry Date: {{expiryDate}}</p>
+                <p>Date Added: {{dateAdded}}</p>
+                <form action="/return_to_stock" method="post">
+                    <input type="hidden" name="itemId" value="{{_id}}">
+                    <button type="submit">Return to Stock</button><br>
+                </form>
+            </div>
+            {{/items}}
+            {{^items}}
+            <p>Basket is empty.</p>
+            {{/items}}
+        </div>
+        <br>
+        {{#items.length}}
+        <form action="/buy" method="POST">
+            <button type="submit" class="btn btn-primary">Complete Order</button>
+        </form>
+        {{/items.length}}
+    </div>
+</body>
+<body class="container">
+</html>

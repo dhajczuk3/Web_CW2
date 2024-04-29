@@ -1,0 +1,35 @@
+{{> head}}
+</header>
+<body>
+{{> nav}}
+<div id="messages" class="tab-pane fade">
+    <h4>Messages</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#messages}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td>{{message}}</td>
+                <td>{{createdAt}}</td>
+            </tr>
+            {{/messages}}
+            {{^messages}}
+            <tr>
+                <td colspan="4">No messages to display.</td>
+            </tr>
+            {{/messages}}
+        </tbody>
+    </table>
+</div>
+</body>
+<body class="container">
+
